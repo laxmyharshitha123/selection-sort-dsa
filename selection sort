@@ -1,0 +1,48 @@
+selection sort : it can sorted the values in an ascending order.
+there are 5 steps for the elements to sort
+step 1 : first we need to find out the minimum value of entire array 
+step 2 : after finding we need to sort the elements in order
+step 3 : again we find the next minimun and swap 
+step 4 : we need to sort until the element is n-2 
+step 5 : we dont need to sort the last element which is highest element of entire array.
+time complexity : 0(n*2)
+beacause it can starts from (n-1)+(n-2)+....+2+1.....
+                            = n(n-1)/2
+                            =o(n*2)
+ code :  public class SelectionSort {
+
+    // Method to perform selection sort
+    public static void selectionSort(int[] arr) {
+        int n = arr.length;
+
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+
+            // Find the minimum element in the unsorted part
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // Swap the found minimum element with the first element
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    // Main method to test the algorithm
+    public static void main(String[] args) {
+        int[] arr = {64, 25, 12, 22, 11};
+
+        selectionSort(arr);
+
+        System.out.println("Sorted array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}
+                          
